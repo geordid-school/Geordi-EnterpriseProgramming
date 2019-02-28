@@ -23,19 +23,6 @@
     <Content Remove="wwwroot\dist\dist\port_sudoku.png" />
     <Content Remove="wwwroot\dist\port_mars.png" />
     <Content Remove="wwwroot\dist\home.bundle.js" />
-    <Content Remove="wwwroot\static\keyboard_bgd.jpg" />
-    <Content Remove="wwwroot\static\port_mars.png" />
-    <Content Remove="wwwroot\static\port_blank.png" />
-    <Content Remove="wwwroot\static\port_mountaintop.png" />
-    <Content Remove="wwwroot\static\port_sudoku.png" />
-    <Content Remove="wwwroot\static\port_website.png" />
-    <Content Remove="wwwroot\static\profile_pic.jpg" />
-    <Content Remove="wwwroot\static\port_opakue.png" />
-    <Content Remove="wwwroot\static\common.bundle.js" />
-    <Content Remove="wwwroot\static\home.bundle.js" />
-    <Content Remove="wwwroot\static\contact.bundle.js" />
-    <Content Remove="wwwroot\static\portfolio.bundle.js" />
-    <Content Remove="wwwroot\static\resume.bundle.js" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="dist\main.js" />
