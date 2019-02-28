@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Geordi Dosher - Contact</title>
+
+    <script src="static/contact.bundle.js"></script>
+    <script src="static/common.bundle.js"></script>
+
+</head>
+    <body>
+        <div id="nav-placeholder"></div>
+        <form class="container-fluid navbar-offset" action="contact-submission.html">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-group">
+                        <label for="contact-input-reason">Reason for Contact</label>
+                        <select class="form-control" id="contact-input-reason">
+                            <option>Ask a Question</option>
+                            <option>Need a developer</option>
+                            <option>Make a Suggestion</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-input-name">Name</label>
+                        <input type="text" class="form-control" id="contact-input-name" placeholder=Enter Name" required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-input-emai">Email address</label>
+                        <input type="email" class="form-control" id="contact-input-email" placeholder="Enter email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-input-textarea">Message</label>
+                        <textarea class="form-control" id="contact-input-textarea" placeholder="Enter message here" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

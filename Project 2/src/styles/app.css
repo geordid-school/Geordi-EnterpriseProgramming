@@ -1,0 +1,16 @@
+﻿
+.navbar-offset {
+    padding: 65px !important;
+} 
+
+.g-center-pre {
+    position: relative;
+}
+
+.g-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

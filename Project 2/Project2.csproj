@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="src\" />
+    <Folder Include="src\styles\" />
+    <Folder Include="src\scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="package-lock.json" />
+    <Content Remove="src\styles\app.css" />
+    <Content Remove="wwwroot\dist\src\img\port_website.png" />
+    <Content Remove="wwwroot\dist\dist\port_sudoku.png" />
+    <Content Remove="wwwroot\dist\port_mars.png" />
+    <Content Remove="wwwroot\dist\home.bundle.js" />
+    <Content Remove="wwwroot\static\keyboard_bgd.jpg" />
+    <Content Remove="wwwroot\static\port_mars.png" />
+    <Content Remove="wwwroot\static\port_blank.png" />
+    <Content Remove="wwwroot\static\port_mountaintop.png" />
+    <Content Remove="wwwroot\static\port_sudoku.png" />
+    <Content Remove="wwwroot\static\port_website.png" />
+    <Content Remove="wwwroot\static\profile_pic.jpg" />
+    <Content Remove="wwwroot\static\port_opakue.png" />
+    <Content Remove="wwwroot\static\common.bundle.js" />
+    <Content Remove="wwwroot\static\home.bundle.js" />
+    <Content Remove="wwwroot\static\contact.bundle.js" />
+    <Content Remove="wwwroot\static\portfolio.bundle.js" />
+    <Content Remove="wwwroot\static\resume.bundle.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="dist\main.js" />
+    <None Remove="src\styles\good.css" />
+  </ItemGroup>
+</Project>

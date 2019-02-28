@@ -1,0 +1,32 @@
+﻿.section {
+    min-height: 100vh;
+}
+
+/* === HOME>Top === */
+
+#home-sec-top {
+    min-height: 100vh;
+    background-image: url('../img/keyboard_bgd.jpg');
+    background-position: cover;
+    padding: 60px;
+    color: white;
+}
+
+#home-top-desc {
+    font-size: 1.4rem;
+}
+
+/* === HOME>About === */
+
+#home-sec-about {
+    background-color: #ffffed;
+}
+
+#home-about-pic-box {
+    margin-bottom: 15px;
+}
+
+#home-about-pic {
+    height: 250px;
+    width: 250px;
+}
