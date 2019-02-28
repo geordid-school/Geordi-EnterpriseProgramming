@@ -45,4 +45,4 @@ node_modules/
 *.swp
 
 #ignoring wwwroot/dist folder which contains webpack output
-wwwroot/static/*
+#wwwroot/static/*
