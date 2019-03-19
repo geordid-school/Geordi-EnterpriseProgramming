@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { SearchComponent } from './search/search.component';
 import { UserResultComponent } from './user-result/user-result.component';
 import { UserComponent } from './user/user.component';
+import { RepoResultComponent } from './repo-result/repo-result.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { UserComponent } from './user/user.component';
     NavMenuComponent,
     SearchComponent,
     UserResultComponent,
-    UserComponent
+    UserComponent,
+    RepoResultComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,10 +27,11 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: SearchComponent, pathMatch: 'full' },
-      { path: 'user/:id', component: UserComponent }
+      { path: 'user/:login', component: UserComponent }
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

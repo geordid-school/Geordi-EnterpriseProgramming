@@ -1,18 +1,20 @@
 import { Commit } from "./commit";
 import { Issue } from "./issue";
+import { User } from "./user";
 
 export class Repo {
 
   name: string;
-  pageUrl: string;
+  html_url: string;
   description: string;
-  numStars: number;
-  numWatchers: number;
-  numForks: number;
-  numIssues: number;
+  stargazers_count: number;
+  watchers_count: number;
+  forks: number;
+  open_issues: number;
   language: string;
-  cloneUrl: string;
-  recentCommits: Commit[];
-  issues: Issue[];
+  clone_url: string;
+  commits_url: string;
+  issues_url: string;
+  owner: User;
 
 }

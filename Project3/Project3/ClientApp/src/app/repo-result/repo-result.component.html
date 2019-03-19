@@ -1,0 +1,21 @@
+
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-2">
+      <img class="rounded img-fluid" height="150" width="150" src="{{repo.owner.avatar_url}}" alt="Repo image" />
+    </div>
+    <div class="col-10">
+      <div class="row ml-2">
+        <a class="align-top h3 mr-4 align-self-center" [routerLink]='["/user", repo.name]'>{{repo.name}}</a>
+        <fa-icon [icon]="faStar" class="fa-lg align-self-center"></fa-icon>
+        <span class="ml-2 align-self-center">{{repo.stargazers_count}}</span>
+      </div>
+      <div class="row ml-2">
+        <p>Open Issues: {{repo.open_issues}}</p>
+      </div>
+      <div class="row ml-2"  *ngIf="repo.language">
+        <p>Language: {{repo.language}}</p>
+      </div>
+    </div>
+</div>

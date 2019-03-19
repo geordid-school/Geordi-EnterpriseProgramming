@@ -17,7 +17,11 @@ export class UserService {
     if (!page) page = 1;
 
     var endpoint = `${this.apiUrl}/search/users?q=${queryString}&page=${page}&per_page=10`;
-    console.log(endpoint);
     return this.http.get<UserSearchResult>(endpoint);
+  }
+
+  getUser(login: string) : Observable<User>{
+    var endpoint = `${this.apiUrl}/users/${login}`;
+    return this.http.get<User>(endpoint);
   }
 }

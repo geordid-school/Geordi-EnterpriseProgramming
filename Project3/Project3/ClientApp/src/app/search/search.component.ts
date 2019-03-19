@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { UserSearchResult } from '../user-search-result';
+import { RepoService } from '../repo.service';
+import { Repo } from '../repo';
+import { RepoSearchResult } from '../repo-search-result';
 
 @Component({
   selector: 'app-search',
@@ -11,15 +14,15 @@ import { UserSearchResult } from '../user-search-result';
 export class SearchComponent implements OnInit {
 
   queryString: string;
+  searchType: number = 0;
   userResults: User[];
+  repoResults: Repo[];
+
   numResults: number;
   page: number = 1;
-
-  testUser: User;
-
   isLoading: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private repoService: RepoService) { }
 
   ngOnInit() {
   }
@@ -28,9 +31,16 @@ export class SearchComponent implements OnInit {
     if (!pageNum) pageNum = 1;
 
     this.isLoading = true;
-    this.userService.search(this.queryString, pageNum)
-      .subscribe(
-        (data: UserSearchResult) => { this.userResults = data.items; this.numResults = data.total_count; this.isLoading = false; this.testUser = data.items[0]; });
+    this.userResults = this.repoResults = null;
+
+    if (this.searchType === 0) { // User
+      this.userService.search(this.queryString, pageNum)
+        .subscribe(
+          (data: UserSearchResult) => { this.userResults = data.items; this.numResults = data.total_count; this.isLoading = false; });
+    } else {
+      this.repoService.search(this.queryString, pageNum)
+        .subscribe((data: RepoSearchResult) => { this.repoResults = data.items; this.numResults = data.total_count; this.isLoading = false; })
+    }
   }
 
 
@@ -43,7 +53,7 @@ export class SearchComponent implements OnInit {
   prev() {
     if (this.page >= 1) {
       this.page--;
-      this.search();
+      this.search(this.page);
       window.scrollTo(0, 0);
     }
   }
