@@ -1,0 +1,39 @@
+<div class="text-center mb-5">
+  <p class="display-1">LookGit</p>
+  <h5 class="text-muted">A "better" way to browse GitHub</h5>
+</div>
+
+<form #searchForm="ngForm">
+  <div class="form-group">
+    <input type="text" class="form-control form-control-lg" name="queryString" id="queryString"
+      required [(ngModel)]="queryString" #queryInput="ngModel" placeholder="Git Searchin'">
+    <div *ngIf="queryInput.invalid && queryInput.touched" class="alert alert-danger">
+      ehh boi you have to type something in first!
+    </div>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="radioUser" value="user" checked>
+    <label class="form-check-label" for="radioUser">
+      User
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="radioRepo" value="repo">
+    <label class="form-check-label" for="radioRepo">
+      Repo
+    </label>
+  </div>
+  <div class="mt-3">
+    <button type="button" class="btn btn-primary" [disabled]="searchForm.invalid" (click)="search()" *ngIf="!isLoading">Search</button>
+    <div *ngIf="isLoading" class="spinner-border text-primary"></div>
+  </div>
+</form>
+
+<div *ngIf="userResults && !isLoading" class="mb-5">
+  <div *ngFor="let user of userResults">
+    <app-user-result [user]="user"></app-user-result>
+  </div>
+
+  <button *ngIf="hasNext()" class="btn btn-primary" (click)="next()">Next</button>
+  <button *ngIf="hasPrev()" class="btn btn-secondary ml-3" (click)="prev()">Prev</button>
+</div>
