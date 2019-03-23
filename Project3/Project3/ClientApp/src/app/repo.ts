@@ -8,7 +8,7 @@ export class Repo {
   html_url: string;
   description: string;
   stargazers_count: number;
-  watchers_count: number;
+  subscribers_count: number;
   forks: number;
   open_issues: number;
   language: string;
@@ -16,5 +16,7 @@ export class Repo {
   commits_url: string;
   issues_url: string;
   owner: User;
+  commits: Commit[];
+  issues: Issue[];
 
 }

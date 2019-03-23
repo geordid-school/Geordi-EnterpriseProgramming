@@ -11,6 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { UserResultComponent } from './user-result/user-result.component';
 import { UserComponent } from './user/user.component';
 import { RepoResultComponent } from './repo-result/repo-result.component';
+import { RepoComponent } from './repo/repo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RepoResultComponent } from './repo-result/repo-result.component';
     SearchComponent,
     UserResultComponent,
     UserComponent,
-    RepoResultComponent
+    RepoResultComponent,
+    RepoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,7 +29,8 @@ import { RepoResultComponent } from './repo-result/repo-result.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: SearchComponent, pathMatch: 'full' },
-      { path: 'user/:login', component: UserComponent }
+      { path: 'user/:login', component: UserComponent },
+      { path: 'repo/:user/:name', component: RepoComponent }
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),

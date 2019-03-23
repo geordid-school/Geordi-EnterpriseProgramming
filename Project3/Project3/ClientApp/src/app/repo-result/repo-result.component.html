@@ -7,7 +7,7 @@
     </div>
     <div class="col-10">
       <div class="row ml-2">
-        <a class="align-top h3 mr-4 align-self-center" [routerLink]='["/user", repo.name]'>{{repo.name}}</a>
+        <a class="align-top h3 mr-4 align-self-center" [routerLink]='["/repo", repo.owner.login, repo.name]'>{{repo.name}}</a>
         <fa-icon [icon]="faStar" class="fa-lg align-self-center"></fa-icon>
         <span class="ml-2 align-self-center">{{repo.stargazers_count}}</span>
       </div>

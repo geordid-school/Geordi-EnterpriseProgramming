@@ -1,0 +1,90 @@
+<div *ngIf="repo" class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <img class="img-fluid rounded" src="{{repo.owner.avatar_url}}" alt="A cool user profile pic" />
+    </div>
+    <div class="col-md-9 pl-2">
+      <div class="row my-3">
+        <div class="col-md-9">
+          <h1>{{repo.name}}</h1>
+        </div>
+      </div>
+
+      <div *ngIf="repo.description" class="row my-3">
+        <div class="col-md-9">
+          <p>{{repo.description}}</p>
+        </div>
+      </div>
+
+      <div class="row my-3">
+        <div class="col-md-9 mt-1">
+          <a class="btn btn-primary" href="{{repo.html_url}}" target="_blank">Go to GitHub Page</a>
+          <button class="btn btn-secondary ml-2" (click)="copyInputMessage(userinput)" value="click to copy">Copy Clone Url</button>
+          <input class="ml-2" type="text" value="{{repo.clone_url}}" #userinput>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-3">
+        <div class="col-md-9">
+          <h4>Repo Info:</h4>
+
+          <fa-icon [icon]="faStar" class="fa-lg align-self-center"></fa-icon>
+          <span class="ml-2 align-self-center">{{repo.stargazers_count}}</span>
+          <br />
+          <fa-icon [icon]="faEye" class="fa-lg align-self-center"></fa-icon>
+          <span class="ml-2 align-self-center">{{repo.subscribers_count}}</span>
+          <br />
+          <span *ngIf="repo.language"><b>Language:</b> {{repo.language}}</span>
+          <br />
+          <span><b>Open Issues:</b> {{repo.open_issues}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="repo.commits" class="row mt-5 mb-3">
+    <div class="col">
+      <h4>Recent Commits:</h4>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Message</th>
+            <th># of Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commit of repo.commits">
+            <td>{{commit.author}}</td>
+            <td><p><a href="{{commit.html_url}}" target="_blank">{{commit.message}}</a></p></td>
+            <td class="text-center">{{commit.comment_count}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="repo.issues" class="row mt-5 mb-3">
+    <div class="col">
+      <h4>Open Issues:</h4>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Created Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let issue of repo.issues">
+            <td><p><a href="{{issue.url}}" target="_blank">{{issue.title}}</a></p></td>
+            <td class="text-center">{{issue.createdDate | date:'medium'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button *ngIf="hasNext()" class="btn btn-primary" (click)="next()">Next</button>
+      <button *ngIf="hasPrev()" class="btn btn-secondary ml-3" (click)="prev()">Prev</button>
+    </div>
+  </div>
+</div>
