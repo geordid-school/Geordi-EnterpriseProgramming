@@ -1,6 +1,6 @@
 <div class="text-center mb-5">
   <p class="display-1">LookGit</p>
-  <h5 class="text-muted">A "better" way to browse GitHub</h5>
+  <h5 class="text-muted">The redneck's way to browse GitHub</h5>
 </div>
 
 <form #searchForm="ngForm">
@@ -8,7 +8,7 @@
     <input type="text" class="form-control form-control-lg" name="queryString" id="queryString"
       required [(ngModel)]="queryString" #queryInput="ngModel" placeholder="Git Searchin'">
     <div *ngIf="queryInput.invalid && queryInput.touched" class="alert alert-danger">
-      ehh boi you have to type something in first!
+      Ya'll gotta type somethin in this box to search, ya hear?
     </div>
   </div>
   <div class="form-group">
@@ -44,7 +44,15 @@
     </div>
   </div>
 
+  <button *ngIf="hasPrev()" class="btn btn-secondary mr-3" (click)="prev()">Prev</button>
   <button *ngIf="hasNext()" class="btn btn-primary" (click)="next()">Next</button>
-  <button *ngIf="hasPrev()" class="btn btn-secondary ml-3" (click)="prev()">Prev</button>
+</div>
+
+<div *ngIf="!initialLoad && !isLoading && !userResults.length && !repoResults.length">
+  <p>No results found</p>
+</div>
+
+<div *ngIf="!isLoading && error" style="color: red">
+  <p>Gorsh, I'm awfully sorry but dere's an error somewhere in this page and I can't get the results fer ya </p>
 </div>
 

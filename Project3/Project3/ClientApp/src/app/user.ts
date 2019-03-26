@@ -9,6 +9,8 @@ export class User {
   location: string;
   html_url: string;
   repos_url: string;
+  repos: Repo[];
   followers_url: string;
+  followers: User[];
 
 }

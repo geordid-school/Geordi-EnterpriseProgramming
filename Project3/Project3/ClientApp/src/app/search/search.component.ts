@@ -21,6 +21,8 @@ export class SearchComponent implements OnInit {
   numResults: number;
   page: number = 1;
   isLoading: boolean;
+  initialLoad: boolean = true;
+  error: boolean;
 
   constructor(private userService: UserService, private repoService: RepoService) { }
 
@@ -31,16 +33,25 @@ export class SearchComponent implements OnInit {
     if (!pageNum) pageNum = 1;
 
     this.isLoading = true;
-    this.userResults = this.repoResults = null;
+    this.initialLoad = false;
+    this.error = false;
+    this.userResults = this.repoResults = [];
 
-    if (this.searchType === 0) { // User
-      this.userService.search(this.queryString, pageNum)
-        .subscribe(
-          (data: UserSearchResult) => { this.userResults = data.items; this.numResults = data.total_count; this.isLoading = false; });
-    } else {
-      this.repoService.search(this.queryString, pageNum)
-        .subscribe((data: RepoSearchResult) => { this.repoResults = data.items; this.numResults = data.total_count; this.isLoading = false; })
+    try {
+      if (this.searchType === 0) { // User
+        this.userService.search(this.queryString, pageNum)
+          .subscribe((data: UserSearchResult) => { this.userResults = data.items; this.numResults = data.total_count; this.isLoading = false; });
+      } else {
+        this.repoService.search(this.queryString, pageNum)
+          .subscribe((data: RepoSearchResult) => { this.repoResults = data.items; this.numResults = data.total_count; this.isLoading = false; })
+      }
     }
+    catch {
+      this.isLoading = false;
+      this.initialLoad = true; //just so we don't show both the no results and the error dialog
+      this.error = true;
+    }
+
   }
 
 

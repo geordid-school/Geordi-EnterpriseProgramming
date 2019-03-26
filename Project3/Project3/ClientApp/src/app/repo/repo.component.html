@@ -34,6 +34,9 @@
           <fa-icon [icon]="faEye" class="fa-lg align-self-center"></fa-icon>
           <span class="ml-2 align-self-center">{{repo.subscribers_count}}</span>
           <br />
+          <fa-icon [icon]="faCodeBranch" class="fa-lg align-self-center"></fa-icon>
+          <span class="ml-2 align-self-center">{{repo.forks}}</span>
+          <br />
           <span *ngIf="repo.language"><b>Language:</b> {{repo.language}}</span>
           <br />
           <span><b>Open Issues:</b> {{repo.open_issues}}</span>

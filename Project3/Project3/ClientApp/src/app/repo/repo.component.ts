@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { RepoService } from '../repo.service';
 import { switchMap } from 'rxjs/operators';
 import { Repo } from '../repo';
-import { faStar, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faEye, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-repo',
@@ -14,6 +14,7 @@ export class RepoComponent implements OnInit {
 
   faStar = faStar;
   faEye = faEye;
+  faCodeBranch = faCodeBranch;
 
   repo: Repo;
   page: number = 1;
