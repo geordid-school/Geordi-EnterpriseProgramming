@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Project4.Services
 {
-	interface ITodoService
+	public interface ITodoService
 	{
 		void CreateTodoItem(Todo item);
 		IEnumerable<Todo> SelectAll();
 		Todo SelectTodo(int id);
 		void DeleteTodo(int id);
-		void UpdateCharacter(int id, Todo todo);
+		void UpdateTodo(int id, Todo todo);
 	}
 }
