@@ -14,6 +14,18 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo>('api/todo');
+    return this.http.get<Todo[]>('api/todo');
+  }
+
+  createTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>('api/todo', todo);
+  }
+
+  getTodo(id: number): Observable<Todo> {
+    return this.http.get<Todo>('api/todo/' + id);
+  }
+
+  editTodo(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>('api/todo/' + todo.id, todo);
   }
 }

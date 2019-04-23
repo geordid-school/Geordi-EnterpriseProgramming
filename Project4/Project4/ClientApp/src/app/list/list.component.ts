@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -10,6 +11,8 @@ import { Todo } from '../todo';
 export class ListComponent implements OnInit {
 
   todos: Todo[];
+
+
 
   constructor(private todoService: TodoService) { }
 
