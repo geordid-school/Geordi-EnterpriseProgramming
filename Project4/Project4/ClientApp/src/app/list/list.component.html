@@ -1,12 +1,28 @@
 
 <div class="container">
   <div class="row">
-
+    <div class="col-2">
+      <label class="switch">
+        <input type="checkbox" name="filterCompleted" [(ngModel)]="filterShowCompleted" (click)="refresh()" />
+        <span class="slider round"></span>
+      </label>
+      <label for="filterCompleted" class="ml-2">Show Completed Tasks?</label>
+    </div>
+    <div class="col-3">
+      <label class="mr-2">Sort By: </label>
+      <select [(ngModel)]="sortSelect" (change)="refresh()">
+        <option value="0">N/A</option>
+        <option value="1">Name ASC</option>
+        <option value="2">Name DESC</option>
+        <option value="3">DueDate ASC</option>
+        <option value="4">DueDate DESC</option>
+      </select>
+    </div>
   </div>
 </div>
 
 
 <div *ngFor="let todo of todos" class="my-2">
-  <app-todo-item [todo]="todo"></app-todo-item>
+  <app-todo-item [todo]="todo" (refresh)="refresh()"></app-todo-item>
 </div>
 

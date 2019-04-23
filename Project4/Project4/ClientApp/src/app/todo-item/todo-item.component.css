@@ -13,3 +13,8 @@
   .checkbox-round:checked {
     background-color: gray;
   }
+
+
+  .delete {
+    color: red;
+  }

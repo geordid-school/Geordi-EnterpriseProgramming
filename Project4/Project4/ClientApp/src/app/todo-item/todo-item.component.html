@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-1">
-      <input type="checkbox" class="checkbox-round" />
-      <fa-icon [icon]="faPencilAlt" class="ml-2" (click)="edit()"></fa-icon>
+      <input type="checkbox" class="checkbox-round" (click)="checkIt()" />
+      <fa-icon *ngIf="!todo.isComplete" [icon]="faPencilAlt" class="ml-2" (click)="edit()"></fa-icon>
+      <fa-icon *ngIf="todo.isComplete" [icon]="faTrashAlt" class="ml-2 delete" (click)="delete()"></fa-icon>
     </div>
     <div class="col-3">
       {{todo.name}}

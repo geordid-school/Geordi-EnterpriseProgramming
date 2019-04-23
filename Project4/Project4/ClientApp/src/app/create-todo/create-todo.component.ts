@@ -14,8 +14,9 @@ export class CreateTodoComponent implements OnInit {
 
   newTodo: Todo = new Todo();
 
-  hasDueDate = true;
+  tags: string = "";
 
+  hasDueDate = true;
   newDate: Date;
   hour: number = 5;
   minute: number = 0;
@@ -58,6 +59,9 @@ export class CreateTodoComponent implements OnInit {
 
       this.minute = momentDate.minutes();
 
+      if (this.newTodo.tags) {
+        this.newTodo.tags.forEach((s: string) => this.tags += s + ", ");
+      }
     }
   }
 
@@ -76,6 +80,17 @@ export class CreateTodoComponent implements OnInit {
     //set time
     let date = new Date(this.newDate.getFullYear(), this.newDate.getMonth(), this.newDate.getDate() + 1, fixedHour, this.minute, 0);
     this.newTodo.dueDate = moment(date).utc().toDate();
+
+    //Tags
+    this.newTodo.tags = [];
+
+    this.tags.split(',')
+      .forEach((s: string) => {
+        if (s.trim() != '') {
+          console.log(s.trim());
+          this.newTodo.tags.push(s.trim());
+        }
+      });
 
     //Upload
     if (this.editMode) {

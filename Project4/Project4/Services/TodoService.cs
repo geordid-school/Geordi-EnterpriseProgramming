@@ -47,6 +47,7 @@ namespace Project4.Services
 			todoToUpdate.Description = todo.Description;
 			todoToUpdate.IsComplete = todo.IsComplete;
 			todoToUpdate.DueDate = todo.DueDate;
+			todoToUpdate.Tags = todo.Tags;
 			_context.SaveChanges();
 		}
 	}
