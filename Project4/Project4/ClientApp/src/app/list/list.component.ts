@@ -11,8 +11,11 @@ import { Todo } from '../todo';
 export class ListComponent implements OnInit {
 
   todos: Todo[];
+  visibleTodos: Todo[];
 
   filterShowCompleted: boolean = false;
+  filterTagString: string = "";
+  filterTags: string[] = [];
 
   sortSelect = 0;
 
@@ -23,22 +26,33 @@ export class ListComponent implements OnInit {
   }
 
   refresh() {
-    console.log("refreshing");
-
     this.todoService.getTodos()
-      .subscribe((data: Todo[]) => { this.todos = this.filter(data) })
+      .subscribe((data: Todo[]) => { this.todos = data; this.filter() })
   }
 
-  filter(items: Todo[]): Todo[] {
+  filter() {
     let output: Todo[] = [];
 
-    items.forEach((todo: Todo) => {
-      if (todo.isComplete === this.filterShowCompleted) {
+    this.todos.forEach((todo: Todo) => {
+
+      let tagMatch = false;
+
+      if (this.filterTags.length <= 0) {
+        tagMatch = true;
+      } else {
+        this.filterTags.forEach((tag: string) => { 
+          if (todo.tags) {
+            if (todo.tags.includes(tag.trim())) tagMatch = true;
+          }
+        });
+      }
+
+      if (tagMatch && todo.isComplete === this.filterShowCompleted) {
         output.push(todo);
       }
     });
 
-    return this.sort(output);
+    this.visibleTodos = this.sort(output);
   }
 
   sort(items: Todo[]): Todo[] {
@@ -71,6 +85,11 @@ export class ListComponent implements OnInit {
     }
 
     return output;
+  }
+
+  filterTagsChange() {
+    this.filterTags = this.filterTagString.split(',').filter((s: string) => { return s.trim().length > 0 });
+    this.filter();
   }
 
 }

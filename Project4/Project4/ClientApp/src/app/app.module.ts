@@ -10,6 +10,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ListComponent } from './list/list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CreateTodoComponent } from './create-todo/create-todo.component';
     NavMenuComponent,
     ListComponent,
     TodoItemComponent,
-    CreateTodoComponent
+    CreateTodoComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,7 +28,8 @@ import { CreateTodoComponent } from './create-todo/create-todo.component';
     RouterModule.forRoot([
       { path: '', component: ListComponent, pathMatch: 'full' },
       { path: 'create', component: CreateTodoComponent },
-      { path: 'create/:id', component: CreateTodoComponent }
+      { path: 'create/:id', component: CreateTodoComponent },
+      { path: 'settings', component: SettingsComponent }
       //{ path: 'fetch-data', component: FetchDataComponent },
     ]),
     FontAwesomeModule

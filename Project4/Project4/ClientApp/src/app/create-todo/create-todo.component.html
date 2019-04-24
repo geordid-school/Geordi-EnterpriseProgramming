@@ -48,7 +48,7 @@
         </div>
         <button type="submit" [disabled]="createEditForm.invalid" (click)="createTodo()" class="btn btn-primary">
           <span *ngIf="!editMode">Create</span>
-          <span *ngIf="editMode">Edit</span>
+          <span *ngIf="editMode">Save Changes</span>
         </button>
       </form>
     </div>

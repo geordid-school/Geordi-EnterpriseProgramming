@@ -18,3 +18,11 @@
   .delete {
     color: red;
   }
+
+  .past-due {
+    background-color: red;
+  }
+
+  .warning {
+    background-color: yellow;
+  }

@@ -1,7 +1,7 @@
 
 <div class="container">
-  <div class="row">
-    <div class="col-2">
+  <div class="row mb-4">
+    <div class="col-3">
       <label class="switch">
         <input type="checkbox" name="filterCompleted" [(ngModel)]="filterShowCompleted" (click)="refresh()" />
         <span class="slider round"></span>
@@ -18,11 +18,16 @@
         <option value="4">DueDate DESC</option>
       </select>
     </div>
+    <div class="col-6">
+      <label for="tagsInput" class="mr-2">Filter by tag (separate by comma):</label>
+      <input type="text" name="tagsInput" [(ngModel)]="filterTagString" (ngModelChange)="filterTagsChange()"/>
+    </div>
   </div>
 </div>
 
 
-<div *ngFor="let todo of todos" class="my-2">
-  <app-todo-item [todo]="todo" (refresh)="refresh()"></app-todo-item>
+<div *ngFor="let todo of visibleTodos" class="my-2">
+  <app-todo-item [todo]="todo" (refresh)="filter()"></app-todo-item>
 </div>
+
 

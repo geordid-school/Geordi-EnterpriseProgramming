@@ -4,6 +4,8 @@ import * as moment from 'moment'
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { TodoService } from '../todo.service';
+import { UserSetting } from '../user-setting';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -21,14 +23,29 @@ export class TodoItemComponent implements OnInit {
 
   formattedDate: string;
 
+  warn: boolean = false;
+  past: boolean = false;
+
   constructor(private router: Router,
-    private service: TodoService) { }
+    private service: TodoService,
+    private settingsService: SettingsService ) { }
 
   ngOnInit() {
     if (this.todo != null && this.todo.dueDate != null) {
       var momentInstance = moment.utc(this.todo.dueDate).local();
       this.formattedDate = momentInstance.format('lll');
     }
+
+    this.settingsService.getSetting(1)
+      .subscribe((data: UserSetting) => {
+        let hoursTilDue = moment.duration(moment.utc(this.todo.dueDate).diff(moment.utc())).asHours();
+        console.log(this.todo.name + ": " + moment.utc(this.todo.dueDate).format() + " - " moment.utc().format() + " = " + hoursTilDue);
+        if (hoursTilDue <= 0) {
+          this.past = true;
+        } else if (hoursTilDue <= data.hoursTilWarning) {
+          this.warn = true;
+        }
+      });
   }
 
   edit() {
