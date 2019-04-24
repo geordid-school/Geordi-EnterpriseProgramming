@@ -71,33 +71,33 @@ namespace Project4.Controllers
             return NoContent();
         }
 
-        // POST: api/UserSettings
-        //[HttpPost]
-        //public async Task<ActionResult<UserSettings>> PostUserSettings(UserSettings userSettings)
-        //{
-        //    _context.UserSettings.Add(userSettings);
-        //    await _context.SaveChangesAsync();
+		// POST: api/UserSettings
+		[HttpPost]
+		public async Task<ActionResult<UserSettings>> PostUserSettings(UserSettings userSettings)
+		{
+			_context.UserSettings.Add(userSettings);
+			await _context.SaveChangesAsync();
 
-        //    return CreatedAtAction("GetUserSettings", new { id = userSettings.Id }, userSettings);
-        //}
+			return CreatedAtAction("GetUserSettings", new { id = userSettings.Id }, userSettings);
+		}
 
-        // DELETE: api/UserSettings/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<UserSettings>> DeleteUserSettings(int id)
-        //{
-        //    var userSettings = await _context.UserSettings.FindAsync(id);
-        //    if (userSettings == null)
-        //    {
-        //        return NotFound();
-        //    }
+		// DELETE: api/UserSettings/5
+		//[HttpDelete("{id}")]
+		//public async Task<ActionResult<UserSettings>> DeleteUserSettings(int id)
+		//{
+		//    var userSettings = await _context.UserSettings.FindAsync(id);
+		//    if (userSettings == null)
+		//    {
+		//        return NotFound();
+		//    }
 
-        //    _context.UserSettings.Remove(userSettings);
-        //    await _context.SaveChangesAsync();
+		//    _context.UserSettings.Remove(userSettings);
+		//    await _context.SaveChangesAsync();
 
-        //    return userSettings;
-        //}
+		//    return userSettings;
+		//}
 
-        private bool UserSettingsExists(int id)
+		private bool UserSettingsExists(int id)
         {
             return _context.UserSettings.Any(e => e.Id == id);
         }
