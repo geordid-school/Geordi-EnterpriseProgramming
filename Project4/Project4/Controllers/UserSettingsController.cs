@@ -82,20 +82,20 @@ namespace Project4.Controllers
 		}
 
 		// DELETE: api/UserSettings/5
-		//[HttpDelete("{id}")]
-		//public async Task<ActionResult<UserSettings>> DeleteUserSettings(int id)
-		//{
-		//    var userSettings = await _context.UserSettings.FindAsync(id);
-		//    if (userSettings == null)
-		//    {
-		//        return NotFound();
-		//    }
+		[HttpDelete("{id}")]
+		public async Task<ActionResult<UserSettings>> DeleteUserSettings(int id)
+		{
+			var userSettings = await _context.UserSettings.FindAsync(id);
+			if (userSettings == null)
+			{
+				return NotFound();
+			}
 
-		//    _context.UserSettings.Remove(userSettings);
-		//    await _context.SaveChangesAsync();
+			_context.UserSettings.Remove(userSettings);
+			await _context.SaveChangesAsync();
 
-		//    return userSettings;
-		//}
+			return userSettings;
+		}
 
 		private bool UserSettingsExists(int id)
         {

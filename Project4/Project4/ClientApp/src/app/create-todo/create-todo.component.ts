@@ -4,6 +4,8 @@ import * as moment from 'moment'
 import { TodoService } from '../todo.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { SettingsService } from '../settings.service';
+import { UserSetting } from '../user-setting';
 
 @Component({
   selector: 'app-create-todo',
@@ -26,6 +28,7 @@ export class CreateTodoComponent implements OnInit {
   editMode: boolean = false;
 
   constructor(private todoService: TodoService,
+    private userService: SettingsService,
     private router: Router,
     private route: ActivatedRoute ) { }
 

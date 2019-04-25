@@ -39,12 +39,21 @@ export class TodoItemComponent implements OnInit {
     this.settingsService.getSetting(1)
       .subscribe((data: UserSetting) => {
         let hoursTilDue = moment.duration(moment.utc(this.todo.dueDate).diff(moment.utc())).asHours();
-        console.log(this.todo.name + ": " + moment.utc(this.todo.dueDate).format() + " - " + moment.utc().format() + " = " + hoursTilDue);
         if (hoursTilDue <= 0) {
           this.past = true;
         } else if (hoursTilDue <= data.hoursTilWarning) {
           this.warn = true;
         }
+      },
+      (error) => {
+        let hoursTilDue = moment.duration(moment.utc(this.todo.dueDate).diff(moment.utc())).asHours();
+        if (hoursTilDue <= 0) {
+          this.past = true;
+        } else if (hoursTilDue <= 48) {
+          this.warn = true;
+        }
+
+        this.settingsService.newSetting().subscribe();
       });
   }
 

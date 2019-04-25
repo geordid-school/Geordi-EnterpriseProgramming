@@ -22,4 +22,11 @@ export class SettingsService {
     return this.http.put<UserSetting>('api/UserSettings/' + setting.id, setting);
   }
 
+  newSetting() {
+    let setting: UserSetting = new UserSetting();
+    setting.id = 0;
+    setting.hoursTilWarning = 48;
+    return this.http.post<UserSetting>('api/UserSettings', setting);
+  }
+
 }
