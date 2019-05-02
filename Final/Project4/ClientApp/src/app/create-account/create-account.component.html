@@ -1,0 +1,29 @@
+<form>
+  <div class="form-group">
+    <label for="loginString">Username</label>
+    <input name="loginString" type="text" [(ngModel)]="username"
+           class="form-control" id="loginString">
+  </div>
+  <div class="form-group">
+    <label for="passwordString">Password</label>
+    <input name="passwordString" type="password" [(ngModel)]="password"
+           class="form-control" id="passwordString">
+  </div>
+  <div *ngIf="duplicate" class="mb-3 alert alert-danger">
+    Username has been taken
+  </div>
+  <div *ngIf="length" class="mb-3 alert alert-danger">
+    Must be at least 8 characters long
+  </div>
+  <div *ngIf="upper" class="mb-3 alert alert-danger">
+    Must have an uppercase letter
+  </div>
+  <div *ngIf="lower" class="mb-3 alert alert-danger">
+    Must have a lowercase letter
+  </div>
+  <div *ngIf="number" class="mb-3 alert alert-danger">
+    Must have a numeric character
+  </div>
+  <button type="button" (click)="create()" class="btn btn-primary">Register</button>
+
+</form>

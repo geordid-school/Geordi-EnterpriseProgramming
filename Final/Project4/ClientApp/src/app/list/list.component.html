@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-3">
+      <label class="switch">
+        <input type="checkbox" name="filterCompleted" [(ngModel)]="filterShowCompleted" (click)="refresh()" />
+        <span class="slider round"></span>
+      </label>
+      <label for="filterCompleted" class="ml-2">Show Completed Tasks?</label>
+    </div>
+    <div class="col-3">
+      <label class="mr-2">Sort By: </label>
+      <select [(ngModel)]="sortSelect" (change)="refresh()">
+        <option value="0">N/A</option>
+        <option value="1">Name ASC</option>
+        <option value="2">Name DESC</option>
+        <option value="3">DueDate ASC</option>
+        <option value="4">DueDate DESC</option>
+      </select>
+    </div>
+    <div class="col-6">
+      <label for="tagsInput" class="mr-2">Filter by tag (separate by comma):</label>
+      <input type="text" name="tagsInput" [(ngModel)]="filterTagString" (ngModelChange)="filterTagsChange()"/>
+    </div>
+  </div>
+</div>
+
+
+<div *ngFor="let todo of visibleTodos" class="my-2">
+  <app-todo-item [todo]="todo" (refresh)="filter()"></app-todo-item>
+</div>
+
+

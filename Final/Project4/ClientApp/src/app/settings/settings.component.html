@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h3>Time til Warn:</h3>
+  </div>
+  <div class="row">
+    <label for="inputDays" class="mr-3">Days:</label>
+    <input type="number" name="inputDays" [(ngModel)]="days" />
+  </div>
+  <div class="row">
+    <label for="inputDays" class="mr-3">Hours:</label>
+    <input type="number" name="inputHours" [(ngModel)]="hours" />
+  </div>
+  <div class="row" *ngIf="error">
+     <div class="alert alert-danger">
+      Must have positive values
+     </div>
+  </div>
+  <div class="row mt-4">
+    <button class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</div>
